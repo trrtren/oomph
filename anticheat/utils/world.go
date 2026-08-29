@@ -94,7 +94,7 @@ func BlockCollisions(b world.Block, pos cube.Pos, src world.BlockSource) []cube.
 	}
 
 	bModel := b.Model()
-	switch b.(type) {
+	switch b.(type) { // wall colissions should be handled directly
 	case block.WoodFence:
 		bModel = blockmodel.Fence{Wood: true}
 	case block.NetherBrickFence:
