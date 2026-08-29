@@ -10,7 +10,7 @@ replace github.com/sandertv/go-raknet => ../go-raknet
 
 replace github.com/sandertv/gophertunnel => ../gophertunnel
 
-replace github.com/df-mc/dragonfly => github.com/oomph-ac/dragonfly v0.0.0-20260817220931-1aac4952091d
+replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260829145500-6c11423120bd
 
 require (
 	github.com/df-mc/dragonfly v0.11.4
