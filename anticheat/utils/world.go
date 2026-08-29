@@ -95,7 +95,7 @@ func BlockCollisions(b world.Block, pos cube.Pos, src world.BlockSource) []cube.
 
 	bModel := b.Model()
 	switch b.(type) {
-	case block.Wall:
+	case block.Wall: // figure out why this is still glitching
 		return collisions.ForBlock(b)
 	case block.WoodFence:
 		bModel = blockmodel.Fence{Wood: true}
