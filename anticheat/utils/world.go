@@ -66,12 +66,6 @@ func BlockFriction(b world.Block) float32 {
 
 // CanPassBlock returns true if an entity can pass through the given block.
 func CanPassBlock(b world.Block) bool {
-	// Walls are excluded from collision detection
-	if _, isWall := b.(block.Wall); isWall {
-		println("DEBUG: Skipping wall block in CanPassBlock")
-		return true
-	}
-	
 	switch BlockName(b) {
 	case "minecraft:web", "minecraft:water", "minecraft:lava":
 		return true
@@ -102,9 +96,16 @@ func BlockCollisions(b world.Block, pos cube.Pos, src world.BlockSource) []cube.
 	bModel := b.Model()
 	switch b.(type) {
 	case block.Wall:
-		// exclude walls from collision detection weird ass movement sim issue
-		println("DEBUG: Skipping wall block in BlockCollisions")
-		return nil
+		// Convert Dragonfly's wall to our custom wall blockmodel
+		if w, ok := b.(block.Wall); ok {
+			bModel = blockmodel.Wall{
+				NorthConnection: w.NorthConnection.Height(),
+				EastConnection:  w.EastConnection.Height(),
+				SouthConnection: w.SouthConnection.Height(),
+				WestConnection:  w.WestConnection.Height(),
+				Post:            w.Post,
+			}
+		}
 	case block.WoodFence:
 		bModel = blockmodel.Fence{Wood: true}
 	case block.NetherBrickFence:
@@ -153,10 +154,6 @@ func NearbyBlockCollisions(aabb cube.BBox, src world.BlockSource) iter.Seq[Block
 					pos := cube.Pos{x, y, z}
 					b := src.Block(df_cube.Pos(pos))
 					if _, isAir := b.(block.Air); isAir {
-						continue
-					}
-					// Skip walls from collision detection
-					if _, isWall := b.(block.Wall); isWall {
 						continue
 					}
 
@@ -238,11 +235,6 @@ func scanNearbyBBoxes(aabb cube.BBox, src world.BlockSource, firstOnly bool) ([]
 				b := src.Block(df_cube.Pos(pos))
 				if CanPassBlock(b) {
 					continue
-				}
-				
-				// DEBUG: Check what blocks are being processed
-				if _, isWall := b.(block.Wall); isWall {
-					println("ERROR: Wall block got past CanPassBlock check!")
 				}
 
 				posVec := pos.Vec3()
