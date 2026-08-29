@@ -148,6 +148,10 @@ func NearbyBlockCollisions(aabb cube.BBox, src world.BlockSource) iter.Seq[Block
 					if _, isAir := b.(block.Air); isAir {
 						continue
 					}
+					// Skip walls from collision detection
+					if _, isWall := b.(block.Wall); isWall {
+						continue
+					}
 
 					// Add the block to the list of block search results.
 					vecPos := pos.Vec3()
