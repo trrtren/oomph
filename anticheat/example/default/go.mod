@@ -62,7 +62,7 @@ replace github.com/oomph-ac/oomph/anticheat => ../..
 
 replace github.com/oomph-ac/oomph/transferproxy => ../../../transferproxy
 
-replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260829145500-6c11423120bd
+replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260826165554-6c11423120bd
 
 replace github.com/sandertv/go-raknet => ../../../go-raknet
 

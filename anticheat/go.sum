@@ -54,8 +54,6 @@ github.com/onsi/ginkgo v1.16.5/go.mod h1:+E8gABHa3K6zRBolWtd+ROzc/U5bkGt0FwiG042
 github.com/onsi/gomega v1.4.3/go.mod h1:ex+gbHU/CVuBBDIJjb2X0qEXbFg53c61hWP/1CpauHY=
 github.com/onsi/gomega v1.17.0 h1:9Luw4uT5HTjHTN8+aNcSThgH1vdXnmdJ8xIfZ4wyTRE=
 github.com/onsi/gomega v1.17.0/go.mod h1:HnhC7FXeEQY45zxNK3PPoIUhzk/80Xly9PcubAlGdZY=
-github.com/oomph-ac/dragonfly v0.0.0-20260817220931-1aac4952091d h1:hCLRvX/zPiAJRHJ3HZ5QxTJ9OBSerPJ91WvG73CmHGw=
-github.com/oomph-ac/dragonfly v0.0.0-20260817220931-1aac4952091d/go.mod h1:gsAQH1WF2QTHBVlV4ZVo+tsc31kcbL37TeG313Ssob0=
 github.com/pion/datachannel v1.6.2 h1:7EXQ8TH3vTouBUdRWYbcX2edSx9Yj6k5zl5P+qyxEPc=
 github.com/pion/datachannel v1.6.2/go.mod h1:pzbdAZvyGtXbcHM1hBbsFaOTf40lZizU/dNlvVOak6E=
 github.com/pion/dtls/v3 v3.1.4 h1:QhvtMflMfu9Kf0RcDC5BJBle4caPskByrKQR6uuYqpY=
@@ -96,6 +94,12 @@ github.com/segmentio/fasthash v1.0.3 h1:EI9+KE1EwvMLBWwjpRDc+fEM+prwxDYbslddQGtr
 github.com/segmentio/fasthash v1.0.3/go.mod h1:waKX8l2N8yckOgmSsXJi7x1ZfdKZ4x7KRMzBtS3oedY=
 github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
 github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
+github.com/trrtren/dragonfly v0.0.0-20260826165554-6c11423120bd h1:zG9psEhgIjuER3ygMKjEMyjdjpWB3Jz9j4I+5j42Fog=
+github.com/trrtren/dragonfly v0.0.0-20260826165554-6c11423120bd/go.mod h1:gsAQH1WF2QTHBVlV4ZVo+tsc31kcbL37TeG313Ssob0=
+github.com/trrtren/go-raknet v0.0.0-20260804171633-295d5444b424 h1:mtfGxWGVcxXF/BHkp8Q2ihSbFBl8qiyZSkaGURYKJss=
+github.com/trrtren/go-raknet v0.0.0-20260804171633-295d5444b424/go.mod h1:m8i0H2zIDryMgl0RLo/M/1BML0Oc6EpqgorBP9LgmKM=
+github.com/trrtren/gophertunnel v0.0.0-20260826170039-93e42c60e737 h1:XOIq21HfckeQ2pBedpnGU9BPJwsG+M4IMeXniD6Enos=
+github.com/trrtren/gophertunnel v0.0.0-20260826170039-93e42c60e737/go.mod h1:0NtdQDRCUVaIBw49v+yCWGhXvW2VmlQpezKCTLT9eko=
 github.com/wlynxg/anet v0.0.5 h1:J3VJGi1gvo0JwZ/P1/Yc/8p63SoW98B5dHkYDmpgvvU=
 github.com/wlynxg/anet v0.0.5/go.mod h1:eay5PRQr7fIVAMbTbchTnO9gG65Hg/uYGdc7mguHxoA=
 github.com/zeebo/assert v1.3.0 h1:g7C04CbJuIDKNPFHmsk4hwZDO5O+kntRxzaUoNXj+IQ=

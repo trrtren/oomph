@@ -2,13 +2,13 @@ module github.com/oomph-ac/oomph/anticheat
 
 go 1.26.0
 
-replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260829150000-6c11423120bd
+replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260826165554-6c11423120bd
 
 replace github.com/oomph-ac/oomph/transferproxy => ../transferproxy
 
-replace github.com/sandertv/go-raknet => github.com/trrtren/go-raknet v0.0.0-20260829150000-295d5444b424
+replace github.com/sandertv/go-raknet => github.com/trrtren/go-raknet v0.0.0-20260804171633-295d5444b424
 
-replace github.com/sandertv/gophertunnel => github.com/trrtren/gophertunnel v0.0.0-20260829150000-93e42c60e737
+replace github.com/sandertv/gophertunnel => github.com/trrtren/gophertunnel v0.0.0-20260826170039-93e42c60e737
 
 require (
 	github.com/chewxy/math32 v1.11.1
