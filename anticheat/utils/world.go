@@ -66,6 +66,11 @@ func BlockFriction(b world.Block) float32 {
 
 // CanPassBlock returns true if an entity can pass through the given block.
 func CanPassBlock(b world.Block) bool {
+	// Walls are excluded from collision detection
+	if _, isWall := b.(block.Wall); isWall {
+		return true
+	}
+	
 	switch BlockName(b) {
 	case "minecraft:web", "minecraft:water", "minecraft:lava":
 		return true
