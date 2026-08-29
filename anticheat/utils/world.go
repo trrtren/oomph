@@ -68,6 +68,7 @@ func BlockFriction(b world.Block) float32 {
 func CanPassBlock(b world.Block) bool {
 	// Walls are excluded from collision detection
 	if _, isWall := b.(block.Wall); isWall {
+		println("DEBUG: Skipping wall block in CanPassBlock")
 		return true
 	}
 	
@@ -102,6 +103,7 @@ func BlockCollisions(b world.Block, pos cube.Pos, src world.BlockSource) []cube.
 	switch b.(type) {
 	case block.Wall:
 		// exclude walls from collision detection weird ass movement sim issue
+		println("DEBUG: Skipping wall block in BlockCollisions")
 		return nil
 	case block.WoodFence:
 		bModel = blockmodel.Fence{Wood: true}
