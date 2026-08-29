@@ -239,6 +239,11 @@ func scanNearbyBBoxes(aabb cube.BBox, src world.BlockSource, firstOnly bool) ([]
 				if CanPassBlock(block) {
 					continue
 				}
+				
+				// DEBUG: Check what blocks are being processed
+				if _, isWall := block.(block.Wall); isWall {
+					println("ERROR: Wall block got past CanPassBlock check!")
+				}
 
 				posVec := pos.Vec3()
 				for _, box := range BlockCollisions(block, pos, src) {
