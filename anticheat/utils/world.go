@@ -96,8 +96,8 @@ func BlockCollisions(b world.Block, pos cube.Pos, src world.BlockSource) []cube.
 	bModel := b.Model()
 	switch b.(type) {
 	case block.Wall:
-		// revert to prismarine, this is weird
-		return collisions.ForBlock(b)
+		// exclude walls from collision detection weird ass movement sim issue
+		return nil
 	case block.WoodFence:
 		bModel = blockmodel.Fence{Wood: true}
 	case block.NetherBrickFence:
