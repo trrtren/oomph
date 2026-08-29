@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/oomph-ac/oomph/anticheat v0.0.0-20260208201834-bff025a3d827
-	github.com/sandertv/gophertunnel v1.60.0
+	github.com/sandertv/gophertunnel v1.61.0
 )
 
 require (
@@ -13,7 +13,7 @@ require (
 	github.com/chewxy/math32 v1.11.1 // indirect
 	github.com/coder/websocket v1.8.14 // indirect
 	github.com/coreos/go-oidc/v3 v3.17.0 // indirect
-	github.com/df-mc/dragonfly v0.10.14-0.20260508142332-b4a4d55303f9 // indirect
+	github.com/df-mc/dragonfly v0.11.4 // indirect
 	github.com/df-mc/go-nethernet v1.0.20 // indirect
 	github.com/df-mc/go-playfab/v2 v2.0.2 // indirect
 	github.com/df-mc/go-xsapi/v2 v2.0.3 // indirect

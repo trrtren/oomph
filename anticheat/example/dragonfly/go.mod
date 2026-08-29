@@ -3,7 +3,7 @@ module github.com/oomph-ac/oomph/anticheat/example/dragonfly
 go 1.26.0
 
 require (
-	github.com/df-mc/dragonfly v0.10.14-0.20260508142332-b4a4d55303f9
+	github.com/df-mc/dragonfly v0.11.4
 	github.com/oomph-ac/oomph/anticheat v0.0.0
 )
 
@@ -44,7 +44,7 @@ require (
 	github.com/pion/turn/v5 v5.0.10 // indirect
 	github.com/pion/webrtc/v4 v4.2.16-0.20260627075746-7a223a6f4d4f // indirect
 	github.com/sandertv/go-raknet v1.15.2-0.20260705184311-0d1fd09e2cf6 // indirect
-	github.com/sandertv/gophertunnel v1.60.0 // indirect
+	github.com/sandertv/gophertunnel v1.61.0 // indirect
 	github.com/segmentio/fasthash v1.0.3 // indirect
 	github.com/wlynxg/anet v0.0.5 // indirect
 	github.com/zeebo/xxh3 v1.1.0 // indirect

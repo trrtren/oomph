@@ -13,10 +13,10 @@ replace github.com/sandertv/gophertunnel => ../gophertunnel
 replace github.com/df-mc/dragonfly => github.com/oomph-ac/dragonfly v0.0.0-20260817220931-1aac4952091d
 
 require (
-	github.com/df-mc/dragonfly v0.10.14-0.20260508142332-b4a4d55303f9
+	github.com/df-mc/dragonfly v0.11.4
 	github.com/getsentry/sentry-go v0.35.3
 	github.com/oomph-ac/oomph/anticheat v0.0.0-20260716201756-d5e22ec6b233
-	github.com/sandertv/gophertunnel v1.60.0
+	github.com/sandertv/gophertunnel v1.61.0
 )
 
 require (

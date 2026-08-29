@@ -12,13 +12,13 @@ replace github.com/sandertv/gophertunnel => ../gophertunnel
 
 require (
 	github.com/chewxy/math32 v1.11.1
-	github.com/df-mc/dragonfly v0.10.14-0.20260508142332-b4a4d55303f9
+	github.com/df-mc/dragonfly v0.11.4
 	github.com/ethaniccc/float32-cube v0.0.0-20250511224129-7af1f8c4ee12
 	github.com/go-gl/mathgl v1.2.0
 	github.com/hjson/hjson-go/v4 v4.6.0
 	github.com/oomph-ac/oomph/transferproxy v0.1.2
 	github.com/sandertv/go-raknet v1.15.2-0.20260705184311-0d1fd09e2cf6
-	github.com/sandertv/gophertunnel v1.60.0
+	github.com/sandertv/gophertunnel v1.61.0
 	github.com/zeebo/xxh3 v1.1.0
 	golang.org/x/exp v0.0.0-20260218203240-3dfff04db8fa
 )
