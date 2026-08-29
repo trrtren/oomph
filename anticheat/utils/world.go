@@ -96,16 +96,8 @@ func BlockCollisions(b world.Block, pos cube.Pos, src world.BlockSource) []cube.
 	bModel := b.Model()
 	switch b.(type) {
 	case block.Wall:
-		// convert dfs wall to custom wall blockmodel
-		if w, ok := b.(block.Wall); ok {
-			bModel = blockmodel.Wall{
-				NorthConnection: w.NorthConnection.Height(),
-				EastConnection:  w.EastConnection.Height(),
-				SouthConnection: w.SouthConnection.Height(),
-				WestConnection:  w.WestConnection.Height(),
-				Post:            w.Post,
-			}
-		}
+		// revert to prismarine, this is weird
+		return collisions.ForBlock(b)
 	case block.WoodFence:
 		bModel = blockmodel.Fence{Wood: true}
 	case block.NetherBrickFence:
