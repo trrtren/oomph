@@ -267,11 +267,16 @@ func simulationIsReliable(p *player.Player, movement player.MovementComponent) b
 
 	stateBB := movement.BoundingBox()
 	for result := range utils.NearbyBlocks(stateBB.Grow(1), false, true, p.World()) {
+		// Exclude liquids from collision
 		if _, isLiquid := result.Block.(world.Liquid); isLiquid {
 			blockBB := cube.Box(0, 0, 0, 1, 1, 1).Translate(result.Position.Vec3())
 			if stateBB.IntersectsWith(blockBB) {
 				return false
 			}
+		}
+		// Exclude walls from collision (same as liquids)
+		if _, isWall := result.Block.(block.Wall); isWall {
+			return false
 		}
 		if utils.BlockName(result.Block) == "minecraft:bamboo" {
 			return false
