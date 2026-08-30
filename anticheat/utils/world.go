@@ -68,7 +68,6 @@ func BlockFriction(b world.Block) float32 {
 func CanPassBlock(b world.Block) bool {
 	// Exclude walls from collision detection (like liquids)
 	if _, isWall := b.(block.Wall); isWall {
-		println("DEBUG: CanPassBlock returning TRUE for wall - should skip")
 		return true
 	}
 	
