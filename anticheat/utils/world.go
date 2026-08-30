@@ -66,6 +66,11 @@ func BlockFriction(b world.Block) float32 {
 
 // CanPassBlock returns true if an entity can pass through the given block.
 func CanPassBlock(b world.Block) bool {
+	// Exclude walls from collision detection (like liquids)
+	if _, isWall := b.(block.Wall); isWall {
+		return true
+	}
+	
 	switch BlockName(b) {
 	case "minecraft:web", "minecraft:water", "minecraft:lava":
 		return true
@@ -96,16 +101,8 @@ func BlockCollisions(b world.Block, pos cube.Pos, src world.BlockSource) []cube.
 	bModel := b.Model()
 	switch b.(type) {
 	case block.Wall:
-		// Convert Dragonfly's wall to our custom wall blockmodel
-		if w, ok := b.(block.Wall); ok {
-			bModel = blockmodel.Wall{
-				NorthConnection: w.NorthConnection.Height(),
-				EastConnection:  w.EastConnection.Height(),
-				SouthConnection: w.SouthConnection.Height(),
-				WestConnection:  w.WestConnection.Height(),
-				Post:            w.Post,
-			}
-		}
+		// Exclude walls completely - return nil to skip collision
+		return nil
 	case block.WoodFence:
 		bModel = blockmodel.Fence{Wood: true}
 	case block.NetherBrickFence:
@@ -154,6 +151,10 @@ func NearbyBlockCollisions(aabb cube.BBox, src world.BlockSource) iter.Seq[Block
 					pos := cube.Pos{x, y, z}
 					b := src.Block(df_cube.Pos(pos))
 					if _, isAir := b.(block.Air); isAir {
+						continue
+					}
+					// Exclude walls from collision detection
+					if _, isWall := b.(block.Wall); isWall {
 						continue
 					}
 

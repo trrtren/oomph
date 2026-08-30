@@ -140,7 +140,8 @@ func SimulatePlayerMovement(p *player.Player, movement player.MovementComponent)
 		blockUnder = p.World().Block(df_cube.Pos(cube.PosFromVec3(movement.Pos().Sub(mgl32.Vec3{0, 0.2}))))
 		if _, isAir := blockUnder.(block.Air); isAir {
 			b := p.World().Block(df_cube.Pos(cube.PosFromVec3(movement.Pos()).Side(cube.FaceDown)))
-			if oomph_block.IsWall(b) || oomph_block.IsFence(b) {
+			// Only use fences, walls are excluded from movement sim
+			if oomph_block.IsFence(b) {
 				blockUnder = b
 			}
 		}
