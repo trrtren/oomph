@@ -278,6 +278,14 @@ func simulationIsReliable(p *player.Player, movement player.MovementComponent) b
 		if _, isWall := result.Block.(block.Wall); isWall {
 			return false
 		}
+		// Exclude slabs from collision
+		if _, isSlab := result.Block.(block.Slab); isSlab {
+			return false
+		}
+		// Exclude stairs from collision
+		if _, isStairs := result.Block.(block.Stairs); isStairs {
+			return false
+		}
 		if utils.BlockName(result.Block) == "minecraft:bamboo" {
 			return false
 		}
