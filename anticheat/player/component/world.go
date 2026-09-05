@@ -220,11 +220,19 @@ func (c *WorldUpdaterComponent) AttemptItemInteractionWithBlock(pk *packet.Inven
 		return true
 	case item.UsableOnBlock:
 		c.mPlayer.Dbg.Notify(player.DebugModeBlockPlacement, true, "running interaction w/ item.UsableOnBlock")
+		
+		// Calculate replace position based on clicked face
+		replaceBlockPos := clickedBlockPos
+		replacingBlock := c.mPlayer.World().Block(df_cube.Pos(clickedBlockPos))
+		if replaceable, ok := replacingBlock.(block.Replaceable); !ok || !replaceable.ReplaceableBy(heldItem) {
+			replaceBlockPos = clickedBlockPos.Side(cube.Face(dat.BlockFace))
+		}
+		
 		utils.UseOnBlock(utils.UseOnBlockOpts{
 			Placer:          c.mPlayer,
 			UseableOnBlock:  heldItem,
 			ClickedBlockPos: df_cube.Pos(clickedBlockPos),
-			ReplaceBlockPos: df_cube.Pos(clickedBlockPos),
+			ReplaceBlockPos: df_cube.Pos(replaceBlockPos),
 			ClickPos:        game.Vec32To64(dat.ClickedPosition),
 			Face:            df_cube.Face(dat.BlockFace),
 			Src:             c.mPlayer.World(),
@@ -279,6 +287,7 @@ func (c *WorldUpdaterComponent) ValidateInteraction(pk *packet.InventoryTransact
 	// Allow placement of seeds/crops on farmland without activatable validation
 	holding := c.mPlayer.Inventory().Holding()
 	if _, isUsableOnBlock := holding.Item().(item.UsableOnBlock); isUsableOnBlock {
+		c.mPlayer.Dbg.Notify(player.DebugModeBlockPlacement, true, "holding UsableOnBlock item, bypassing activatable validation")
 		return true
 	}
 	
