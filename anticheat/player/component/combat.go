@@ -397,7 +397,9 @@ func (c *AuthoritativeCombatComponent) Calculate() bool {
 
 	// Reject hits whose ray passes through a solid block. Common false-positive
 	// source on client/server block-state desync, hence the opt-out.
-	if !c.useClientTracker && hitValid && raycastHit && closestRaycastDist > 0 && !local.DisableBlockOcclusionCheck {
+	// Only invalidate if the raycast distance is reasonable (<7 blocks). Absurdly high
+	// raycast distances indicate position desync rather than actual block occlusion.
+	if !c.useClientTracker && hitValid && raycastHit && closestRaycastDist > 0 && closestRaycastDist < 7.0 && !local.DisableBlockOcclusionCheck {
 		start, end := lerpedAtClosest.attackPos, closestHitResult.Position()
 	check_blocks_between_ray:
 		for blockPos := range game.BlocksBetween(start, end, 50) {
