@@ -275,6 +275,13 @@ func (c *WorldUpdaterComponent) ValidateInteraction(pk *packet.InventoryTransact
 	if _, isActivatable := interactedBlock.(block.Activatable); !isActivatable {
 		return true
 	}
+	
+	// Allow placement of seeds/crops on farmland without activatable validation
+	holding := c.mPlayer.Inventory().Holding()
+	if _, isUsableOnBlock := holding.Item().(item.UsableOnBlock); isUsableOnBlock {
+		return true
+	}
+	
 	if len(utils.BlockCollisions(interactedBlock, blockPos, c.mPlayer.World())) == 0 {
 		c.initalInteractionAccepted = true
 		return true
