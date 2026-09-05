@@ -224,8 +224,15 @@ func (c *WorldUpdaterComponent) AttemptItemInteractionWithBlock(pk *packet.Inven
 		// Calculate replace position based on clicked face
 		replaceBlockPos := clickedBlockPos
 		replacingBlock := c.mPlayer.World().Block(df_cube.Pos(clickedBlockPos))
-		if replaceable, ok := replacingBlock.(block.Replaceable); !ok || !replaceable.ReplaceableBy(heldItem) {
-			replaceBlockPos = clickedBlockPos.Side(cube.Face(dat.BlockFace))
+		
+		// Only calculate replace position for items that are also blocks (seeds)
+		if blockItem, isBlock := heldItem.(df_world.Block); isBlock {
+			if replaceable, ok := replacingBlock.(block.Replaceable); !ok || !replaceable.ReplaceableBy(blockItem) {
+				replaceBlockPos = clickedBlockPos.Side(cube.Face(dat.BlockFace))
+			}
+		} else {
+			// For non-block items (hoes, buckets), use clicked position
+			replaceBlockPos = clickedBlockPos
 		}
 		
 		utils.UseOnBlock(utils.UseOnBlockOpts{
