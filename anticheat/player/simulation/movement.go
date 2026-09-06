@@ -286,6 +286,31 @@ func simulationIsReliable(p *player.Player, movement player.MovementComponent) b
 		if _, isStairs := result.Block.(block.Stairs); isStairs {
 			return false
 		}
+		// Exclude fences and fence gates
+		if _, isFence := result.Block.(block.WoodFence); isFence {
+			return false
+		}
+		if _, isFence := result.Block.(block.NetherBrickFence); isFence {
+			return false
+		}
+		if _, isFenceGate := result.Block.(block.WoodFenceGate); isFenceGate {
+			return false
+		}
+		// Exclude carpets
+		if _, isCarpet := result.Block.(block.Carpet); isCarpet {
+			return false
+		}
+		if _, isCarpet := result.Block.(block.MossCarpet); isCarpet {
+			return false
+		}
+		// Exclude pressure plates
+		if _, isPlate := result.Block.(oworld.PressurePlate); isPlate {
+			return false
+		}
+		// Exclude candles
+		if _, isCandle := result.Block.(block.Candle); isCandle {
+			return false
+		}
 		if utils.BlockName(result.Block) == "minecraft:bamboo" {
 			return false
 		}
