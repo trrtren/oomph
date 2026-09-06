@@ -304,7 +304,7 @@ func simulationIsReliable(p *player.Player, movement player.MovementComponent) b
 			return false
 		}
 		// Exclude pressure plates
-		if _, isPlate := result.Block.(oworld.PressurePlate); isPlate {
+		if _, isPlate := result.Block.(oomph_block.PressurePlate); isPlate {
 			return false
 		}
 		// Exclude candles
