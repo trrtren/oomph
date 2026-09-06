@@ -689,22 +689,8 @@ func attemptKnockback(movement player.MovementComponent) bool {
 
 func attemptJump(p *player.Player, dbg *player.Debugger) bool {
 	movement := p.Movement()
-	onGround := movement.OnGround()
-	
-	// Allow jump with small leniency if player is very close to ground
-	// This handles edge cases where collision detection desyncs slightly
-	if !onGround && movement.Vel().Y() <= 0 {
-		// Check if player is within 0.5 blocks of a solid block below
-		posBelow := movement.Pos().Sub(mgl32.Vec3{0, 0.5, 0})
-		blockBelow := p.World().Block(df_cube.Pos(cube.PosFromVec3(posBelow)))
-		if _, isAir := blockBelow.(block.Air); !isAir {
-			onGround = true
-			dbg.Notify(player.DebugModeMovementSim, true, "allowing jump with ground leniency (block below: %s)", utils.BlockName(blockBelow))
-		}
-	}
-	
-	if !movement.Jumping() || !onGround || movement.JumpDelay() > 0 {
-		dbg.Notify(player.DebugModeMovementSim, movement.Jumping(), "rejected jump from client (onGround=%v jumpDelay=%d)", onGround, movement.JumpDelay())
+	if !movement.Jumping() || !movement.OnGround() || movement.JumpDelay() > 0 {
+		dbg.Notify(player.DebugModeMovementSim, movement.Jumping(), "rejected jump from client (onGround=%v jumpDelay=%d)", movement.OnGround(), movement.JumpDelay())
 		return false
 	}
 
