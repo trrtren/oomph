@@ -35,5 +35,5 @@ func Register(p *player.Player) {
 	p.RegisterDetection(New_ReachB(p))
 
 	// hitbox detections
-	p.RegisterDetection(New_HitboxA(p))
+	//p.RegisterDetection(New_HitboxA(p))
 }
