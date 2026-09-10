@@ -91,13 +91,7 @@ func (p *Player) handleClientPacket(ctx *context.HandlePacketContext) {
 	pk := *(ctx.Packet())
 	switch pk := pk.(type) {
 	case *packet.PacketViolationWarning:
-		p.Log().Warn(
-			"client sent PacketViolationWarning",
-			"type", pk.Type,
-			"severity", pk.Severity,
-			"packet_id", pk.PacketID,
-			"violation_ctx", pk.ViolationContext,
-		)
+		// client sent a packet violation warning, silently ignore instead of spamming log files
 	case *packet.CommandRequest:
 		args := splitCommandLine(pk.CommandLine)
 		if len(args) >= 2 && args[0] == "/"+oconfig.Global.CommandName {
