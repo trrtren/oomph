@@ -14,6 +14,7 @@ const (
 	DebugModeLatency
 	DebugModeChunks
 	DebugModeAimA
+	DebugModeAimB
 	DebugModeTimer
 	DebugModeBlockPlacement
 	DebugModeUnhandledPackets
@@ -39,6 +40,7 @@ var (
 		"latency",
 		"chunks",
 		"aim-a",
+		"aim-b",
 		"timer-a",
 		"block_placements",
 		"unhandled_packets",
@@ -55,6 +57,7 @@ var (
 		"latency":           DebugModeLatency,
 		"chunks":            DebugModeChunks,
 		"aim-a":             DebugModeAimA,
+		"aim-b":             DebugModeAimB,
 		"timer-a":           DebugModeTimer,
 		"block_placements":  DebugModeBlockPlacement,
 		"unhandled_packets": DebugModeUnhandledPackets,

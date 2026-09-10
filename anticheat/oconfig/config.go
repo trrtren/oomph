@@ -113,6 +113,11 @@ var (
 				FlagMsg:    "{prefix} §e{player} §6rotated suspiciously §7[§cx{violations}§7]",
 				Punishment: PunishmentTypeKick,
 			},
+			"Aim_B": {
+				MaxVl:      5.0,
+				FlagMsg:    "{prefix} §e{player} §6has consistent aim patterns §7[§cx{violations}§7]",
+				Punishment: PunishmentTypeKick,
+			},
 			"BadPacket_A": {
 				MaxVl:      1.0,
 				FlagMsg:    "{prefix} §e{player} §6sent an invalid packet",

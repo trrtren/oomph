@@ -8,6 +8,7 @@ func Register(p *player.Player) {
 
 	// aim detections
 	p.RegisterDetection(New_AimA(p))
+	p.RegisterDetection(New_AimB(p))
 
 	// bad packet detections
 	p.RegisterDetection(New_BadPacketA(p))
