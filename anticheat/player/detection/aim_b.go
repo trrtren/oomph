@@ -8,6 +8,7 @@ import (
 	"github.com/df-mc/dragonfly/server/block"
 	df_cube "github.com/df-mc/dragonfly/server/block/cube"
 	"github.com/ethaniccc/float32-cube/cube"
+	"github.com/go-gl/mathgl/mgl32"
 	"github.com/oomph-ac/oomph/anticheat/player"
 	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
 )
@@ -112,7 +113,7 @@ func (d *AimB) Detect(pk packet.Packet) {
 	}
 
 	// Skip if player is on stairs
-	blockBelowPos := df_cube.Pos(cube.PosFromVec3(d.mPlayer.Movement().Pos().Sub(cube.Vec3{0, 1, 0})))
+	blockBelowPos := df_cube.Pos(cube.PosFromVec3(d.mPlayer.Movement().Pos().Sub(mgl32.Vec3{0, 1, 0})))
 	blockBelow := d.mPlayer.World().Block(blockBelowPos)
 	if _, isStairs := blockBelow.(block.Stairs); isStairs {
 		return
