@@ -19,13 +19,13 @@
     # A soft-limit for how much memory the Oomph proxy should use in megabytes. The default value is 1GB (1024MB).
     # If you are running Oomph on a container, we recommend setting this to roughly ~500MB lower to avoid OOM errors.
     # Increase this as neccessary to reduce garbage collection cycles.
-    mem_threshold: 1024
+    mem_threshold: 4096
 
-    # The address the proxy listens on for incoming connections. For the most part, just using a colon followed by the port is fine.
+   # The address the proxy listens on for incoming connections. For the most part, just using a colon followed by the port is fine.
     local_addr: ":19132"
 
     # The address the proxy first connects to for the remote server.
-    remote_addr: ":20000"
+    remote_addr: "76.164.199.95:19133"
 
     # The address the proxy will connect to if the initial connection to the remote address fails.
     backup_addr: ""
@@ -49,10 +49,10 @@
     resource_opts:
     {
         # The folder where resource packs are stored. If your resource pack requires a content key, list them in a JSON file with a map of the pack UUID to the content key.
-        resource_folder: ""
+        resource_folder: "/home/container/oomph/example-proxy/resource_packs"
 
         # Set to true if you require players to download the resource packs stored on the proxy.
-        require_packs: false
+        require_packs: true
     }
 
     # Options for configuring the network settings for Oomph.
@@ -82,11 +82,11 @@
         # The maximum amount of ticked positions Oomph should store for each entity for combat rewind and simulation.
         # This value is capped at 20 ticks (1000ms).
         # This option is not applied if Combat.FullAuthoritative is set to false. Set to -1 to disable.
-        max_entity_rewind: 6
+        max_entity_rewind: 20
 
         # The maximum amount of player movements Oomph will accept before applying knockback forcefully.
         # Set to -1 to disable.
-        max_kb_delay: 10
+        max_kb_delay: -1
 
         # The maximum amount of player movements Oomph will allow the client's world state to be out of sync with the server until
         # forcing a block update.
@@ -98,15 +98,15 @@
     movement_opts:
     {
         # The amount of blocks between the client and Oomph's prediction required to trigger a correction. It is recommended to keep this option at around 0.2-0.5 blocks to avoid large noticable corrections.
-        correction_threshold: 0.30000001192092896
+        correction_threshold: 0.35
 
         # The amount of block per tick Oomph's position moves towards the client's position. Note that the persuasion is not applied on the Y-axis.
         # Increasing this value above the default option will result in slight movement bypasses.
-        persuasion_threshold: 0.0020000000949949026
+        persuasion_threshold: 0.003
 
         # Should Oomph accept the client's position completely if it's within the PositionAcceptanceThreshold?
         # Enabling this option will result in small movement bypasses.
-        accept_client_position: false
+        accept_client_position: true
 
         # The distance between the client and Oomph's position (in blocks) required for Oomph to accept the client's position. This option is only applied if AcceptClientPosition is set to true.
         position_acception_threshold: 0.09000000357627869
@@ -130,16 +130,16 @@
     combat_opts:
     {
         # The maximum amount of CPS that Oomph will allow for the left click.
-        left_cps_limit: 20
+        left_cps_limit: 25
 
         # The maximum amount of CPS that Oomph will allow for the right click.
-        right_cps_limit: 20
+        right_cps_limit: 25
 
         # The maximum amount of CPS that Oomph will allow for the left click on mobile devices.
-        left_cps_limit_mobile: 16
+        left_cps_limit_mobile: 25
 
         # The maximum amount of CPS that Oomph will allow for the right click on mobile devices.
-        right_cps_limit_mobile: 15
+        right_cps_limit_mobile: 25
 
         # The maximum angle in degrees that Oomph will allow for an attack to be considered valid.
         maximum_attack_angle: 85
@@ -177,7 +177,18 @@
             flag_message: "{prefix} §e{player} §6rotated suspiciously §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: kick
+            punishment_type: none
+        }
+        Aim_B:
+        {
+            # The maximum amount of violations that Oomph will allow before taking action for this detection.
+            max_violations: 5
+
+            # The message that will be sent to authorized staff when a player fails this detection.
+            flag_message: "{prefix} §e{player} §6has consistent aim patterns §7[§cx{violations}§7]"
+
+            # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
+            punishment_type: none
         }
         Autoclicker_A:
         {
@@ -188,7 +199,7 @@
             flag_message: "{prefix} §e{player} §6is clicking too quickly §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: kick
+            punishment_type: none
         }
         BadPacket_A:
         {
@@ -265,7 +276,7 @@
             flag_message: "{prefix} §e{player} §6is aiming suspiciously §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Cloud_Combat:
         {
@@ -276,7 +287,7 @@
             flag_message: "{prefix} §e{player} §6is fighting suspiciously §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Cloud_Proxy:
         {
@@ -287,7 +298,7 @@
             flag_message: "{prefix} §e{player} §6is using a game proxy §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Cloud_Scaffold:
         {
@@ -298,7 +309,7 @@
             flag_message: "{prefix} §e{player} §6is building suspiciously §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         EditionFaker_A:
         {
@@ -342,7 +353,7 @@
             flag_message: "{prefix} §e{player} §7| §6Hitbox §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         InvMove_A:
         {
@@ -353,7 +364,7 @@
             flag_message: "{prefix} §e{player} §6moving whilst in inventory"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Killaura_A:
         {
@@ -364,7 +375,7 @@
             flag_message: "{prefix} §e{player} §7| §6Killaura §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Nuker_A:
         {
@@ -375,7 +386,7 @@
             flag_message: "{prefix} §e{player} §6tried to break blocks using an invalid packet §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Proxy_A:
         {
@@ -386,7 +397,7 @@
             flag_message: "{prefix} §e{player} §6is likely using a game proxy"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: kick
+            punishment_type: none
         }
         Proxy_B:
         {
@@ -397,7 +408,7 @@
             flag_message: "{prefix} §e{player} §6is connected with a game proxy"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Reach_A:
         {
@@ -408,7 +419,7 @@
             flag_message: "{prefix} §e{player} §7| §6Reach §8(Raycast) §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Reach_B:
         {
@@ -419,7 +430,7 @@
             flag_message: "{prefix} §e{player} §7| §6Reach §8(Raw) §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Scaffold_A:
         {
@@ -430,7 +441,7 @@
             flag_message: "{prefix} §e{player} §6sent invalid action to place blocks §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
         Scaffold_B:
         {
@@ -441,7 +452,7 @@
             flag_message: "{prefix} §e{player} §6is placing with an invalid direction §7[§cx{violations}§7]"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
-            punishment_type: ban
+            punishment_type: none
         }
     }
 }
