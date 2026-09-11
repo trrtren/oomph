@@ -70,7 +70,7 @@ var (
 		},
 
 		Movement: MovementOpts{
-			CorrectionThreshold:         0.3,
+			CorrectionThreshold:         0.5,
 			PersuasionThreshold:         0.002,
 			AcceptClientPosition:        false,
 			PositionAcceptanceThreshold: 0.09,
