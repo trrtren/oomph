@@ -64,8 +64,8 @@ var (
 			GlobalMovementCutoffThreshold: -1,
 			MaxGhostBlockChain:            -1,
 			MaxACKTimeout:                 60,
-			MaxEntityRewind:               6, // set to 20 for leniency
-			MaxKnockbackDelay:             10, //  set to -1 for leniency
+			MaxEntityRewind:               20, // set to 20 for leniency
+			MaxKnockbackDelay:             -1, //  set to -1 for leniency
 			MaxBlockUpdateDelay:           -1,
 		},
 
