@@ -66,6 +66,24 @@ func (d *ReachB) run(c player.CombatComponent) {
 		}
 	}
 	
+	// skip if raycasts are invalid (entity not properly tracked)
+	raycasts := c.Raycasts()
+	if len(raycasts) == 0 {
+		return
+	}
+	
+	// check if raycast hit (if it's maxfloat, raycast failed)
+	raycastHit := false
+	for _, dist := range raycasts {
+		if dist < 1000 { // if any raycast is reasonable, we have a hit
+			raycastHit = true
+			break
+		}
+	}
+	if !raycastHit {
+		return // skip check if raycast completely failed
+	}
+	
 	minReach := float32(math32.MaxFloat32)
 	for _, dist := range c.Raws() {
 		if dist < minReach {
