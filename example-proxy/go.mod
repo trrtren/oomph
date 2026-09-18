@@ -10,13 +10,13 @@ replace github.com/sandertv/go-raknet => ../go-raknet
 
 replace github.com/sandertv/gophertunnel => ../gophertunnel
 
-replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260826165554-6c11423120bd
+replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260918142952-5fc0c4875db5
 
 require (
-	github.com/df-mc/dragonfly v0.11.4
+	github.com/df-mc/dragonfly v0.11.5
 	github.com/getsentry/sentry-go v0.35.3
 	github.com/oomph-ac/oomph/anticheat v0.0.0-20260716201756-d5e22ec6b233
-	github.com/sandertv/gophertunnel v1.61.0
+	github.com/sandertv/gophertunnel v1.62.0
 )
 
 require (
@@ -30,7 +30,7 @@ require (
 	github.com/df-mc/go-xsapi/v2 v2.0.3 // indirect
 	github.com/df-mc/goleveldb v1.1.9 // indirect
 	github.com/df-mc/jsonc v1.0.5 // indirect
-	github.com/df-mc/worldupgrader v1.0.21 // indirect
+	github.com/df-mc/worldupgrader v1.0.22 // indirect
 	github.com/ethaniccc/float32-cube v0.0.0-20250511224129-7af1f8c4ee12 // indirect
 	github.com/go-gl/mathgl v1.2.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.4 // indirect

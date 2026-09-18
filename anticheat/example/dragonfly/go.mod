@@ -3,7 +3,7 @@ module github.com/oomph-ac/oomph/anticheat/example/dragonfly
 go 1.26.0
 
 require (
-	github.com/df-mc/dragonfly v0.11.4
+	github.com/df-mc/dragonfly v0.11.5
 	github.com/oomph-ac/oomph/anticheat v0.0.0
 )
 
@@ -18,7 +18,7 @@ require (
 	github.com/df-mc/go-xsapi/v2 v2.0.3 // indirect
 	github.com/df-mc/goleveldb v1.1.9 // indirect
 	github.com/df-mc/jsonc v1.0.5 // indirect
-	github.com/df-mc/worldupgrader v1.0.21 // indirect
+	github.com/df-mc/worldupgrader v1.0.22 // indirect
 	github.com/ethaniccc/float32-cube v0.0.0-20250511224129-7af1f8c4ee12 // indirect
 	github.com/go-gl/mathgl v1.2.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
@@ -44,7 +44,7 @@ require (
 	github.com/pion/turn/v5 v5.0.10 // indirect
 	github.com/pion/webrtc/v4 v4.2.16-0.20260627075746-7a223a6f4d4f // indirect
 	github.com/sandertv/go-raknet v1.15.2-0.20260705184311-0d1fd09e2cf6 // indirect
-	github.com/sandertv/gophertunnel v1.61.0 // indirect
+	github.com/sandertv/gophertunnel v1.62.0 // indirect
 	github.com/segmentio/fasthash v1.0.3 // indirect
 	github.com/wlynxg/anet v0.0.5 // indirect
 	github.com/zeebo/xxh3 v1.1.0 // indirect
@@ -58,7 +58,7 @@ require (
 	golang.org/x/time v0.14.0 // indirect
 )
 
-replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260826165554-6c11423120bd
+replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260918142952-5fc0c4875db5
 
 replace github.com/oomph-ac/oomph/anticheat => ../..
 

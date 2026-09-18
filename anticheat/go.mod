@@ -2,23 +2,23 @@ module github.com/oomph-ac/oomph/anticheat
 
 go 1.26.0
 
-replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260826165554-6c11423120bd
+replace github.com/df-mc/dragonfly => github.com/trrtren/dragonfly v0.0.0-20260918142952-5fc0c4875db5
 
 replace github.com/oomph-ac/oomph/transferproxy => ../transferproxy
 
 replace github.com/sandertv/go-raknet => github.com/trrtren/go-raknet v0.0.0-20260804171633-295d5444b424
 
-replace github.com/sandertv/gophertunnel => github.com/trrtren/gophertunnel v0.0.0-20260826170039-93e42c60e737
+replace github.com/sandertv/gophertunnel => github.com/trrtren/gophertunnel v0.0.0-20260916224619-8e4c03746b2e
 
 require (
 	github.com/chewxy/math32 v1.11.1
-	github.com/df-mc/dragonfly v0.11.4
+	github.com/df-mc/dragonfly v0.11.5
 	github.com/ethaniccc/float32-cube v0.0.0-20250511224129-7af1f8c4ee12
 	github.com/go-gl/mathgl v1.2.0
 	github.com/hjson/hjson-go/v4 v4.6.0
 	github.com/oomph-ac/oomph/transferproxy v0.1.2
 	github.com/sandertv/go-raknet v1.15.2-0.20260705184311-0d1fd09e2cf6
-	github.com/sandertv/gophertunnel v1.61.0
+	github.com/sandertv/gophertunnel v1.62.0
 	github.com/zeebo/xxh3 v1.1.0
 	golang.org/x/exp v0.0.0-20260218203240-3dfff04db8fa
 )
@@ -33,7 +33,7 @@ require (
 	github.com/df-mc/go-xsapi/v2 v2.0.3 // indirect
 	github.com/df-mc/goleveldb v1.1.9 // indirect
 	github.com/df-mc/jsonc v1.0.5 // indirect
-	github.com/df-mc/worldupgrader v1.0.21 // indirect
+	github.com/df-mc/worldupgrader v1.0.22 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
