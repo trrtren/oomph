@@ -689,24 +689,8 @@ func attemptKnockback(movement player.MovementComponent) bool {
 
 func attemptJump(p *player.Player, dbg *player.Debugger) bool {
 	movement := p.Movement()
-	
-	if !movement.Jumping() {
-		return false
-	}
-	
-	onGround := movement.OnGround()
-	
-	// hopefully this fixes the timing issue where client lands before server processes collision
-	aboutToLand := !onGround && 
-		movement.Vel().Y() < 0 && 
-		movement.Vel().Y() > -0.5 && // player isnt falling too fast
-		hasBlockNearbyBelow(movement, p.World())
-	
-	// only enforce jump delay if player was already on ground (prevents bhop)
-	jumpDelayBlocking := movement.JumpDelay() > 0 && onGround
-	
-	if (!onGround && !aboutToLand) || jumpDelayBlocking {
-		dbg.Notify(player.DebugModeMovementSim, movement.Jumping(), "rejected jump from client (onGround=%v aboutToLand=%v jumpDelay=%d yVel=%.4f)", onGround, aboutToLand, movement.JumpDelay(), movement.Vel().Y())
+	if !movement.Jumping() || !movement.OnGround() || movement.JumpDelay() > 0 {
+		dbg.Notify(player.DebugModeMovementSim, movement.Jumping(), "rejected jump from client (onGround=%v jumpDelay=%d)", movement.OnGround(), movement.JumpDelay())
 		return false
 	}
 
@@ -722,22 +706,6 @@ func attemptJump(p *player.Player, dbg *player.Debugger) bool {
 
 	movement.SetVel(newVel)
 	return true
-}
-
-// hasBlockNearbyBelow checks if there's a solid block within 0.2 blocks below the player
-func hasBlockNearbyBelow(movement player.MovementComponent, w world.BlockSource) bool {
-	playerPos := movement.Pos()
-	checkPos := cube.PosFromVec3(playerPos.Sub(mgl32.Vec3{0, 0.2, 0}))
-	b := w.Block(df_cube.Pos(checkPos))
-	
-	if _, isAir := b.(block.Air); isAir {
-		checkPos = cube.PosFromVec3(playerPos).Side(cube.FaceDown)
-		b = w.Block(df_cube.Pos(checkPos))
-	}
-	
-	// return true if block is not air (i.e., something solid to land on)
-	_, isAir := b.(block.Air)
-	return !isAir
 }
 
 func attemptTeleport(p *player.Player, dbg *player.Debugger) bool {
