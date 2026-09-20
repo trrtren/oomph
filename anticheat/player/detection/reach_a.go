@@ -72,6 +72,18 @@ func (d *ReachA) run(c player.CombatComponent) {
 	if len(raycasts) == 0 {
 		return
 	}
+	
+	// check if raycast hit (if it's maxfloat, raycast failed)
+	raycastHit := false
+	for _, dist := range raycasts {
+		if dist < 1000 { // if any raycast is reasonable, we have a hit
+			raycastHit = true
+			break
+		}
+	}
+	if !raycastHit {
+		return // skip check if raycast completely failed
+	}
 
 	minReach := float32(math32.MaxFloat32)
 	maxReach := float32(0)
