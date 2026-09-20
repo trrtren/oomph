@@ -702,7 +702,10 @@ func attemptJump(p *player.Player, dbg *player.Debugger) bool {
 		movement.Vel().Y() > -0.5 && // player isnt falling too fast
 		hasBlockNearbyBelow(movement, p.World())
 	
-	if (!onGround && !aboutToLand) || movement.JumpDelay() > 0 {
+	// only enforce jump delay if player was already on ground (prevents bhop)
+	jumpDelayBlocking := movement.JumpDelay() > 0 && onGround
+	
+	if (!onGround && !aboutToLand) || jumpDelayBlocking {
 		dbg.Notify(player.DebugModeMovementSim, movement.Jumping(), "rejected jump from client (onGround=%v aboutToLand=%v jumpDelay=%d yVel=%.4f)", onGround, aboutToLand, movement.JumpDelay(), movement.Vel().Y())
 		return false
 	}
