@@ -689,8 +689,21 @@ func attemptKnockback(movement player.MovementComponent) bool {
 
 func attemptJump(p *player.Player, dbg *player.Debugger) bool {
 	movement := p.Movement()
-	if !movement.Jumping() || !movement.OnGround() || movement.JumpDelay() > 0 {
-		dbg.Notify(player.DebugModeMovementSim, movement.Jumping(), "rejected jump from client (onGround=%v jumpDelay=%d)", movement.OnGround(), movement.JumpDelay())
+	
+	if !movement.Jumping() {
+		return false
+	}
+	
+	
+	
+	onGround := movement.OnGround()
+	
+	// check if player is falling and very close to a surface (within 0.15 blocks)
+	// This handles the case where client thinks they landed but server hasn't processed collision yet
+	aboutToLand := !onGround && movement.Vel().Y() < 0 && movement.Pos().Y()-float32(int(movement.Pos().Y())) < 0.15
+	
+	if (!onGround && !aboutToLand) || movement.JumpDelay() > 0 {
+		dbg.Notify(player.DebugModeMovementSim, movement.Jumping(), "rejected jump from client (onGround=%v aboutToLand=%v jumpDelay=%d yVel=%.4f)", onGround, aboutToLand, movement.JumpDelay(), movement.Vel().Y())
 		return false
 	}
 
