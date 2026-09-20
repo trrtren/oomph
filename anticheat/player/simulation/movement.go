@@ -722,7 +722,7 @@ func attemptJump(p *player.Player, dbg *player.Debugger) bool {
 }
 
 // hasBlockNearbyBelow checks if there's a solid block within 0.2 blocks below the player
-func hasBlockNearbyBelow(movement player.MovementComponent, w player.BlockSource) bool {
+func hasBlockNearbyBelow(movement player.MovementComponent, w world.BlockSource) bool {
 	playerPos := movement.Pos()
 	checkPos := cube.PosFromVec3(playerPos.Sub(mgl32.Vec3{0, 0.2, 0}))
 	b := w.Block(df_cube.Pos(checkPos))
